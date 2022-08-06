@@ -1,0 +1,21 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  eslint:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: repositorio git
+      uses: actions/checkout@v2
+
+    - name: verso node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+
+    - name: instalar dependencia
+      run: npm install
+    
+    - name: executando lint
+      run: npx eslint .
